@@ -2,7 +2,6 @@
 #define MISLIBRES
 
 #include"password.c"
-#include"auto_fantastic.c"
-
+#include"secuencias.c"
 
 #endif

@@ -24,10 +24,12 @@ int main(void){
         }	
 choose=getchar();
 choose=choose-'0';
+inicia();
 switch(choose){
 	case 1: auto_();
 	       break; 
-	case 2: break;
+	case 2: carrera();
+		break;
 	default: break; 	
 
 return 0;
@@ -35,35 +37,5 @@ return 0;
 }}
 
 
-
-
-
-void autofantastic(void){
-       	pioInit(); 
- int vec[] = {23,24,25,12,16,20,21,26}; // Se declare GPI° 17 come entrada
- int i;
- pinMode(23, 1); 
- pinMode(24, 1);
- pinMode(25, 1); 
- pinMode(16, 1);
- pinMode(12, 1); 
- pinMode(20, 1);
- pinMode(21, 1); 
- pinMode(26, 1);
- while(1) {
-  gpio_low(vec);
-  for(i=0; i<8; i++){
-    digitalWrite(vec[i], 1);
-    sleep(100);
-    digitalWrite(vec[i], 0);
-  }
-  for(i=7; i>-1; i--){
-    digitalWrite(vec[i], 1);
-    sleep(100);
-    digitalWrite(vec[i], 0);
-  } 
- }
- 
-} 
 
 
