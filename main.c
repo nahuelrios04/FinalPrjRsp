@@ -29,6 +29,8 @@ switch(choose){
 	case 1: auto_();
 	       break; 
 	case 2: choque();
+	case 3: apilada();
+		break;
 	case 4: carrera();
 		break;
 	default: break; 	
