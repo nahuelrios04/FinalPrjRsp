@@ -1,4 +1,5 @@
 #include "EasyPIO.h"
+#include<time.h>
 #define N 8
 int y, i;
 int vec[] = {23,24,25,12,16,20,21,26}; // Se declare GPI° 17 come entrada
@@ -14,6 +15,35 @@ void inicia(void){
 			 
          }
 
+int choque(void){
+	 int j;
+	 int table[11][8] = {
+	 	{0,0,0,0,0,0,0,0},
+	 	{1,0,0,0,0,0,0,1},
+	 	{0,1,0,0,0,0,1,0},
+	 	{0,0,1,0,0,1,0,0},
+	 	{0,0,0,1,1,0,0,0},
+	 	{0,0,0,0,0,0,0,0},
+	 	{0,0,0,1,1,0,0,0},
+	 	{0,0,1,0,0,1,0,0},
+	 	{0,1,0,0,0,0,1,0},
+	 	{1,0,0,0,0,0,0,1},
+	 	{0,0,0,0,0,0,0,0},
+	 };
+	 gpio_low(vec);
+	 while(1){
+		 for(i=0;i<11;i++){
+			 for(j=0;j<8;j++){
+				 digitalWrite(vec[j], table[i][j]);
+			 
+			 }
+
+		 	usleep(500000);
+		 	}
+	 }
+
+return 0;
+}
 
 int carrera(void){
 	 gpio_low(vec);
