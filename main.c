@@ -23,21 +23,40 @@ int main(void){
 	printf("\n8 - eleccion4");
         }	
 choose=getchar();
+printf("\n");
 choose=choose-'0';
 inicia();
 switch(choose){
-	case 1: auto_();
+	case 1: printf("Ud. ha seleccionado Auto Fantástico.\n");
+		printf("Presione 'q' para salir\n");
+		auto_();
+		close_keyboard();
+		gpio_low(vec);
 	       break; 
-	case 2: choque();
-	case 3: apilada();
+	case 2: printf("Ud. ha seleccionado Choque.\n");
+		printf("Presione 'q' para salir\n");
+	        choque();
+		close_keyboard();
+		gpio_low(vec);
+	        break;
+		
+	case 3: printf("Ud. ha seleccionado Apilada.\n");
+		printf("Presione 'q' para salir\n");
+		apilada();
+		close_keyboard();
+		gpio_low(vec);
 		break;
-	case 4: carrera();
+	case 4: printf("Ud. ha seleccionado La carrera.\n");
+		printf("Presione 'q' para salir\n");
+		carrera();
+		close_keyboard();
+		gpio_low(vec);
 		break;
 	default: break; 	
-
+}
 return 0;
 
-}}
+}
 
 
 

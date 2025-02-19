@@ -1,7 +1,9 @@
 #include "EasyPIO.h"
+#include"kbhit.h"
 #include<time.h>
 #define N 8
 int y, i;
+char tec;
 int vec[] = {23,24,25,12,16,20,21,26}; // Se declare GPI° 17 come entrada
 void gpio_low(int *a){
 for(y=0;y<8;y++)
@@ -16,6 +18,7 @@ void inicia(void){
          }
 
 int choque(void){
+	init_keyboard();
 	 int j;
 	 int table[11][8] = {
 	 	{0,0,0,0,0,0,0,0},
@@ -30,18 +33,24 @@ int choque(void){
 	 	{1,0,0,0,0,0,0,1},
 	 	{0,0,0,0,0,0,0,0},
 	 };
+
 	 gpio_low(vec);
 	 while(1){
 		 for(i=0;i<11;i++){
 			 for(j=0;j<8;j++){
 				 digitalWrite(vec[j], table[i][j]);
-			 
+			         if(kbhit()){
+					if(readch()=='q'){
+						tec=0;
+						return 0;
+					} 
+				 
+				 }
 			 }
 
 		 	usleep(500000);
 		 	}
 	 }
-
 return 0;
 }
 
@@ -99,15 +108,20 @@ int apilada(void){
 		 for(i=0;i<47;i++){
 			 for(j=0;j<8;j++){
 				 digitalWrite(vec[j], table[i][j]);
+		 		usleep(50000);
+			         if(kbhit()){
+					if(readch()=='q'){
+						tec=0;
+						return 0;
+					} 
 			 
 			 }
 
-		 	usleep(500000);
 		 	}
-	 }
+	 }}
 
 return 0;
-}
+	 }
 
 int carrera(void){
 	 gpio_low(vec);
@@ -116,13 +130,29 @@ int carrera(void){
     			digitalWrite(vec[i], 1);
     			sleep(1);
     			digitalWrite(vec[i], 0);
+			         if(kbhit()){
+					if(readch()=='q'){
+						tec=0;
+						return 0;
+					} }
   				}
   		for(i=0; i<N; i++){
     			digitalWrite(vec[i], 1);
-		}  
+			         if(kbhit()){
+					if(readch()=='q'){
+						tec=0;
+						return 0;
+					} }
+		} 	
 		sleep(1); 
   		for(i=0; i<N; i++){
     			digitalWrite(vec[i], 0);
+			         if(kbhit()){
+					if(readch()=='q'){
+						tec=0;
+						return 0;
+					} 
+				 }
 		}
 		sleep(1);
 	}
@@ -135,15 +165,18 @@ int auto_(void){
 	 while(1) {
   		for(i=0; i<N; i++){
     			digitalWrite(vec[i], 1);
-    			sleep(1);
+    			usleep(500000);
     			digitalWrite(vec[i], 0);
-  				}
+				 }
+  				
   		for(i=N-1; i>=0; i--){
     			digitalWrite(vec[i], 1);
-    			sleep(1);
+    			usleep(500000);
     			digitalWrite(vec[i], 0);
-  					} 
-		 }
+					} 
+				 }
+  				 
+		 
  
  return 0;
 } 
