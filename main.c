@@ -52,7 +52,8 @@ switch(choose){
 		close_keyboard();
 		gpio_low(vec);
 		break;
-	default: break; 	
+	default: printf("Ha seleccionado un rango incorrecto.\n"); 
+		break; 	
 }
 return 0;
 
